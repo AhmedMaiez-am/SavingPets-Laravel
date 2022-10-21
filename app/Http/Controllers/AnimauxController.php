@@ -24,6 +24,12 @@ class AnimauxController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $request->validate([
+            'ref' => 'required',
+            'age' => 'required',
+            'race' => 'required',
+            'type' => 'required',
+        ]);
         Animaux::create($input);
         return redirect('animaux')->with('flash_message', 'Animaux Addedd!');  
     }
