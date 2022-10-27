@@ -34,6 +34,7 @@ protected $signature = 'db:create {name?}';
 
 protected $description = 'Create a new MySQL database based on the database config file or the provide
 d name';
+
 /**
  * /**
 
