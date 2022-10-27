@@ -1,13 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AnimauxController;
+use App\Http\Controllers\LocauxController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CandidaturesController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DepartementsController;
 use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\ActionController;
 
 
-use App\Http\Controllers\AnimauxController;
-use App\Http\Controllers\LocauxController;
+use App\Models\Candidatures;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +23,9 @@ use App\Http\Controllers\LocauxController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/associations', AssociationController::class);
-Route::resource('/actions', ActionController::class);
-
 
 Route::get('/', function () {
     return view('layout');
-    
 });
 
 Route::get('/', function () {
@@ -33,5 +33,21 @@ Route::get('/', function () {
 });
 
 Route::resource('/animaux', AnimauxController::class);
-
+Route::resource('/candidatures', CandidaturesController::class);
 Route::resource('/locaux', LocauxController::class);
+Route::resource('/departements', DepartementsController::class);
+Route::resource('/associations', AssociationController::class);
+Route::resource('/actions', ActionController::class);
+
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

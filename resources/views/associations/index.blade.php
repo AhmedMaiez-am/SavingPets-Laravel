@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
+<style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container1 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15% 15% auto;
+}
+</style>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="UTF-8">
@@ -73,7 +102,7 @@
 
                 <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
                     <div>{{ $loop->iteration }}</div>   
-                    <div class="profile-photo"><img class="img-fluid" src="img/team/12.jpg" alt="">
+                    <div class="profile-photo"><img class="img-fluid" src="img/team/14.jpg" alt="">
                     </div>
 
 
@@ -104,23 +133,23 @@
     </section>
 
 
-<div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Animaux</h2>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ url('/associations/create') }}" class="btn btn-primary btn-sm" title="Add New association">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
+    <div class="container1">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+
+                <div class="card-body">
+                    <a href="{{ url('/associations/create') }}" class="btn btn-success btn-sm"
+                        title="Add New association">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                    </a>
+                    <br />
+                    <br />
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
                                         <th>id</th>
                                         <th>titre</th>
                                         <th>adresse</th>
@@ -137,15 +166,52 @@
                                         <td>{{ $item->telephone }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>
-                                            <a href="{{ url('/associations/' . $item->id) }}" title="View associations"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/associations/' . $item->id . '/edit') }}" title="Edit associations"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/associations' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete associations" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        <a href="" title="View Association" data-toggle="modal"
+                                            data-target="#myModal"><button class="btn btn-info btn-sm"><i
+                                                    class=" fa fa-eye" aria-hidden="true"></i>
+                                                View</button></a>
+                                        <a href="{{ url('/associations/' . $item->id . '/edit') }}"
+                                            title="Edit association"><button class="btn btn-primary btn-sm"><i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                Edit</button></a>
+                                        <form method="POST" action="{{ url('/associations' . '/' . $item->id) }}"
+                                            accept-charset="UTF-8" style="display:inline">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-primary btn-sm" title="Delete Association"
+                                                onclick="return confirm(&quot;Confirm delete?&quot;)"><i
+                                                    class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+
+                                                </form>
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close btn btn-info btn-sm"
+                                                            data-dismiss="modal">&times;</button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
                                 @endforeach
                                 </tbody>
                             </table>

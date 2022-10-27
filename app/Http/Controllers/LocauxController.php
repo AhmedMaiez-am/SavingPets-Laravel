@@ -7,24 +7,17 @@ use App\Models\Locaux;
 
 class LocauxController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $locaux = Locaux::all();
+        return view('locaux.index')->with('locaux',$locaux);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        return view('locaux.create');
     }
 
     /**
@@ -35,7 +28,10 @@ class LocauxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Locaux::create($input);
+        return redirect('locaux')->with('flash_message', 'Locaux Addedd!');
+
     }
 
     /**
@@ -46,7 +42,8 @@ class LocauxController extends Controller
      */
     public function show($id)
     {
-        //
+        $locaux = Locaux::find($id);
+        return view('locaux.show')->with('locaux',$locaux);
     }
 
     /**
@@ -57,7 +54,8 @@ class LocauxController extends Controller
      */
     public function edit($id)
     {
-        //
+        $locaux = Locaux::find($id);
+        return view('locaux.edit')->with('locaux',$locaux);
     }
 
     /**
@@ -69,7 +67,10 @@ class LocauxController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $locaux = Locaux::find($id);
+        $input = $request->all();
+        $locaux->update($input); 
+        return redirect('locaux')->with('flash_message', 'locaux Updated!');
     }
 
     /**
@@ -80,6 +81,7 @@ class LocauxController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Locaux::destroy($id);
+        return redirect('locaux')->with('flash_message', 'locaux deleted!'); 
     }
 }

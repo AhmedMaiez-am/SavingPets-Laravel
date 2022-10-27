@@ -22,7 +22,7 @@ return new class extends Migration
         $table->timestamp('date');
         $table->unsignedBigInteger('association_id');
             $table->foreign('association_id')
-                ->references('association_id')
+                ->references('id')
                 ->on('associations')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');

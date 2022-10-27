@@ -19,48 +19,73 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
+
+    </head>
+
+    <style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #00aced;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #23d5ab;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.container {
+    width: 50%;
+    height: 82%;
+    margin: 10% auto;
+
+}
+</style>
 
 <body>
-
-<div id="navbar-top">
-        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
-            <div class="container">
-                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="nav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#services">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#work">Work</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#clients">Clients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-
-<div class="card">
-  <div class="card-header">Actions Page</div>
-  <div class="card-body">
+    <div class="container">
       
       <form action="{{ url('actions') }}" method="post">
         {!! csrf_field() !!}
@@ -83,7 +108,7 @@
 </form>
   
   </div>
-</div>
+
 
 </body>
 </html>
