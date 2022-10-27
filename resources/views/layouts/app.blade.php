@@ -6,7 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel 9 User Roles and Permissions Tutorial Example') }}</title>
+    
 
     @vite(['resources/js/app.js'])
 
@@ -35,17 +35,26 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Créer un compte') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
-                            <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                            <li><a class="nav-link" href="{{ route('users.index') }}">utilisateurs</a></li>
+                            <!-- <li><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li> -->
+                            <li><a class="nav-link" href="{{ route('animaux.index') }}">Animaux</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Locaux</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Association</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Vaccination</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Stérilisation</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Candidature</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Donnation</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Evennement</a></li>
+                            <li><a class="nav-link" href="{{ route('locaux.index') }}">Actions</a></li>
                             
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

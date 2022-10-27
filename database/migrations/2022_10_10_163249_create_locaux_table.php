@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('adresse_local');
             $table->string('fax_local');
             $table->timestamps();
+            
         });
+
+
     }
 
     /**

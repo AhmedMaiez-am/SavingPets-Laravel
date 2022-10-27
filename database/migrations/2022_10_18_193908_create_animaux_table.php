@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string("race");
             $table->string("type");
             $table->timestamps();
+            $table->unsignedBigInteger('idLoc');
+            $table->foreign('idLoc')
+                -> references('id')
+                -> on('locaux')
+                -> onDelete('restrict')
+                -> onUpdate('restrict');
         });
     }
 

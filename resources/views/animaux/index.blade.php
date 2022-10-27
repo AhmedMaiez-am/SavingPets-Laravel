@@ -24,131 +24,92 @@
 <body>
 
 
-<div id="navbar-top">
-        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
-            <div class="container">
-                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="nav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#services">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#work">Work</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#clients">Clients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
+
+<section id="about" class="page">
+        <div class="container">
+
+        
+
+
+            <div class="content text-center">
+                <div class="heading">
+                    <h2 class="mt-0 mb-4">Animaux</h2>
+                    <div class="border"></div>   
+                    <p class="mt-4 mb-0">notre responsabilité de respecter et de protéger l’animal. Au-delà de ce devoir, nous sommes convaincus que la relation que nous pouvons avoir avec un animal apporte à chacun bonheur, partage et complicité. Lutter contre la maltraitance et les trafics d’animaux, contre les abandons, sensibiliser le public et faire évoluer les mentalités, recueillir les animaux abandonnés et leur trouver une famille responsable, soutenir les petites associations, éduquer les jeunes… nous nous mobilisons jour après jour pour permettre à chaque animal d’avoir une vie meilleure et préserver l’avenir du monde vivant.</p>
+                
+                     </br>
                 </div>
+                <a href="{{ url('/animaux/create') }}" class="btn btn-primary btn-sm" title="Add New animaux">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter Animal
+                </a>
+                <a href="{{ url('/generate-pdf') }}" class="btn btn-primary btn-sm" title="Imprimer">
+                            <i  aria-hidden="true"></i> Imprimer
+                </a>
+
+            <div class="row">  
+            @foreach($animaux as $item)
+
+                <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
+                    <div>{{ $loop->iteration }}</div>   
+                    <div class="profile-photo"><img class="img-fluid" src="img/team/6.jpg" alt="">
+                    </div>
+                        <div class="bio mt-4">
+                            <h5 class="mb-1"></h5>
+                            <p>{{ $item->ref }}</p>
+                            <div class="border mt-4 mb-4"></div> 
+                            <a href="{{ url('/animaux/' . $item->id) }}" title="Animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
+                           
+                            <a href="{{ url('/animaux/' . $item->id . '/edit') }}" title="Edit animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                            <form method="POST" action="{{ url('/animaux' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </form>
+                        </div>
+                </div>                  
+                @endforeach
             </div>
-        </nav>
-    </div>
+            </div>
+        </div>
 
 
-    <section id="about" class="page">
+        
+
+
+
+    </section>
+
+
+
+
+    <section id="services" class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">Animaux.</h2>
+                    <h2 class="mt-0 mb-4">Ce que nous aimons faire.</h2>
                     <div class="border"></div>
-                    <p class="mt-4 mb-0">notre responsabilité de respecter et de protéger l’animal. Au-delà de ce devoir, nous sommes convaincus que la relation que nous pouvons avoir avec un animal apporte à chacun bonheur, partage et complicité. Lutter contre la maltraitance et les trafics d’animaux, contre les abandons, sensibiliser le public et faire évoluer les mentalités, recueillir les animaux abandonnés et leur trouver une famille responsable, soutenir les petites associations, éduquer les jeunes… nous nous mobilisons jour après jour pour permettre à chaque animal d’avoir une vie meilleure et préserver l’avenir du monde vivant.</p>
+                    <p class="mt-4 mb-0">Nous aimons protéger, sauver, soigner et aider nos animaux</p>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/12.jpg" alt="">
-                        </div>
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="300">
+                        <i class="fa fa-globe fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">www.savingpets.com</a></h3>
+                       
+                    </div>
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="600">
+                        <i class="fa fa-cloud fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">www.facebook.com/savingpets</a></h3>
                         
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/50.jpg" alt="">
-                        </div>
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="900">
+                        <i class="fa fa-mobile fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">71.000.000</a></h3>
                         
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/30.jpg" alt="">
-                        </div>
-                      
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInRight" data-delay="600">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/14.jpg" alt="">
-                        </div>
-                      
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-<div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Animaux</h2>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ url('/animaux/create') }}" class="btn btn-primary btn-sm" title="Add New animaux">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>ref</th>
-                                        <th>age</th>
-                                        <th>race</th>
-                                        <th>type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($animaux as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->ref }}</td>
-                                        <td>{{ $item->age }}</td>
-                                        <td>{{ $item->race }}</td>
-                                        <td>{{ $item->type }}</td>
-                                        <td>
-                                            <a href="{{ url('/animaux/' . $item->id) }}" title="View animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/animaux/' . $item->id . '/edit') }}" title="Edit animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/animaux' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer id="footer">
         <div class="container">
@@ -176,11 +137,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright">
-                        Created by <a href="http://halibegic.info">halibegic</a> &middot; Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a> &middot; Based on <a href="http://getbootstrap.com/">Bootstrap v4</a> &middot; Icons by <a href="http://fontawesome.io/">Font Awesome</a> &middot;
-                        <a href="http://www.github.com/halibegic/merlin">GitHub</a> &middot;
-                        <a href="http://steamcommunity.com/id/halibegic">Buy Me a Game</a>
-                    </p>
+                   
                 </div>
             </div>
         </div>

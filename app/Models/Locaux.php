@@ -11,4 +11,11 @@ class Locaux extends Model
     protected $table = 'locaux';
     protected $primaryKey = 'id';
     protected $fillable = ['telephone_local', 'adresse_local', 'fax_local'];
+
+
+
+    public function Animaux()
+    {
+        return $this->hasMany(Animaux::class);
+    }
 }

@@ -11,5 +11,10 @@ class Animaux extends Model
 
     protected $table = 'animaux';
     protected $primaryKey = 'id';
-    protected $fillable = ['ref', 'age', 'race' , 'type'];
+    protected $fillable = ['ref', 'age', 'race' , 'type' , 'idLoc'];
+
+    public function Locaux()
+    {
+        return $this->belongsTo(Locaux::class);
+    }
 }
