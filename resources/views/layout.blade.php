@@ -31,8 +31,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h1 class="mt-0 mb-4 animated hiding" data-animation="fadeInDown" data-delay="300">SAVING PETS</h1>
-                        <a class="mt-0 mb-4 btn btn-blue nav-external animated hiding" data-animation="fadeIn" data-delay="900" href="#services">Find more</a>
-                        <h3 class="mt-0 mb-0 animated hiding" data-animation="fadeIn" data-delay="600">We are here to protect our animals.</h3>
+                        <h3 class="mt-0 mb-0 animated hiding" data-animation="fadeIn" data-delay="600">Nous sommes ici pour protéger nos animaux.</h3>
                     </div>
                 </div>
             </div>
@@ -49,23 +48,27 @@
                 <div class="collapse navbar-collapse" id="nav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/vaccins">Vaccins</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Découvrir</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/sterilisations">Sterilisations</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Accueillir</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#work">Work</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Protéger</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#clients">Clients</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Aider</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Informer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
+                            <a class="nav-link" href="{{ url('/login') }}">Adopter</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/login') }}">Nous rejoindre</a>
+                        </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -75,25 +78,24 @@
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">What we love doing.</h2>
+                    <h2 class="mt-0 mb-4">Saving Pets.</h2>
                     <div class="border"></div>
-                    <p class="mt-4 mb-0">We love protecting , saving , treating & helping our animals</p>
+                    <p class="mt-4 mb-0">Une plateforme pour la gestion des associations assurant la
+protection des animaux de la rue blessés et accidentés et le suivi des
+bénévoles qui protègent ces animaux par la stérilisation et la vaccination</p>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="300">
-                        <i class="fa fa-globe fa-5x"></i>
-                        <h3 class="mt-5 mb-4"><a href="#">Web Design</a></h3>
-                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <i class="fa fa-medkit fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">Vaccination</a></h3>
                     </div>
                     <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="600">
-                        <i class="fa fa-cloud fa-5x"></i>
-                        <h3 class="mt-5 mb-4"><a href="#">Web Development</a></h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lau dantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.</p>
+                        <i class="fa fa-heartbeat fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#"> Stérilisation</a></h3>
                     </div>
                     <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="900">
-                        <i class="fa fa-mobile fa-5x"></i>
-                        <h3 class="mt-5 mb-4"><a href="#">Mobile Development</a></h3>
-                        <p>Aliquam aliquet, est a ullamcorper condimentum, tellus nulla fringilla elit, a iaculis nulla turpis sed wisi. Fusce volutpat. Etiam sodales ante id nunc. Proin ornare dignissim lacus.</p>
+                        <i class="fa fa-university fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">Associations</a></h3>
                     </div>
                 </div>
             </div>
@@ -103,31 +105,18 @@
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">This is how we do it.</h2>
+                    <h2 class="mt-0 mb-4">Des soins pour tous.</h2>
+                    <p>Ils assurent tous les jours les consultations, vaccinations et opérations chirurgicales de plus de 20 000 animaux malades chaque année contre le seul remboursement des frais.</p>
                     <div class="border"></div>
-                    <p class="mt-4 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, alias enim placeat earum quos ab.</p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div id="portfolio">
-                            <ul class="filters list-inline">
-                                <li class="list-inline-item">
-                                    <a class="active" data-filter="*" href="#">All</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a data-filter=".photography" href="#">Photography</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a data-filter=".branding" href="#">Branding</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a data-filter=".web" href="#">Web</a>
-                                </li>
-                            </ul>
+                
                             <ul class="items list-unstyled clearfix animated hiding mb-0" data-animation="fadeInRight">
                                 <li class="item branding">
                                     <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/1.jpg')}}" alt="">
+                                        <img src="{{('img/team/40.jpg')}}" alt="">
                                         <div class="overlay">
                                             <span>Etiam porta</span>
                                         </div>
@@ -135,7 +124,7 @@
                                 </li>
                                 <li class="item photography">
                                     <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/2.jpg')}}" alt="">
+                                        <img src="{{('img/team/6.jpg')}}" alt="">
                                         <div class="overlay">
                                             <span>Lorem ipsum</span>
                                         </div>
@@ -143,7 +132,7 @@
                                 </li>
                                 <li class="item branding">
                                     <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/3.jpg')}}" alt="">
+                                        <img src="{{('img/team/50.jpg')}}" alt="">
                                         <div class="overlay">
                                             <span>Vivamus quis</span>
                                         </div>
@@ -151,44 +140,14 @@
                                 </li>
                                 <li class="item photography">
                                     <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/4.jpg')}}" alt="">
+                                        <img src="{{('img/team/1.jpg')}}" alt="">
                                         <div class="overlay">
                                             <span>Donec ac tellus</span>
                                         </div>
                                     </a>
                                 </li>
-                                <li class="item photography">
-                                    <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/5.jpg')}}" alt="">
-                                        <div class="overlay">
-                                            <span>Etiam volutpat</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="item web">
-                                    <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/6.jpg')}}" alt="">
-                                        <div class="overlay">
-                                            <span>Donec congue </span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="item photography">
-                                    <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/7.jpg')}}" alt="">
-                                        <div class="overlay">
-                                            <span>Nullam a ullamcorper diam</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="item web">
-                                    <a href="work.html" data-gall="work" data-vbtype="ajax">
-                                        <img src="{{('img/work/8.jpg')}}" alt="">
-                                        <div class="overlay">
-                                            <span>Etiam consequat</span>
-                                        </div>
-                                    </a>
-                                </li>
+                               
+                        
                             </ul>
                         </div>
                     </div>
@@ -196,168 +155,17 @@
             </div>
         </div>
     </section>
-    <section id="clients" class="page">
-        <div class="container">
-            <div class="content text-center">
-                <div class="row">
-                    <div class="col-sm-12 animated hiding" data-animation="fadeInDown">
-                        <div id="testimonials" class="carousel slide">
-                            <ol class="carousel-indicators">
-                                <li data-target="#testimonials" data-slide-to="0" class="active"></li>
-                                <li data-target="#testimonials" data-slide-to="1" class=""></li>
-                                <li data-target="#testimonials" data-slide-to="2" class=""></li>
-                                <li data-target="#testimonials" data-slide-to="3" class=""></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active flex-column">
-                                    <p class="quote mb-4">Quisque convallis diam ligula, ac accumsan eros pretium vel. Curabitur convallis nibh sit amet iaculis ornare. Integer blandit quis diam sed tincidunt.</p>
-                                    <p class="client mb-5">John Doe / CEO</p>
-                                </div>
-                                <div class="carousel-item flex-column">
-                                    <p class="quote mb-4">Vestibulum volutpat accumsan sem non eleifend. Vivamus pretium nisi semper sapien eleifend, vel lacinia lacus sodales. Morbi bibendum purus at leo laoreet, vel ultricies orci viverra.</p>
-                                    <p class="client mb-5">Jorginho Jian / Developer</p>
-                                </div>
-                                <div class="carousel-item flex-column">
-                                    <p class="quote mb-4">Curabitur in nulla et lorem varius convallis. Morbi bibendum purus at leo laoreet, vel ultricies orci viverra. Duis quis accumsan urna. Nulla faucibus mauris elit, vitae tristique nisi sollicitudin ut.</p>
-                                    <p class="client mb-5">Gandalf Kadir / Web Designer</p>
-                                </div>
-                                <div class="carousel-item flex-column">
-                                    <p class="quote mb-4">Nullam vel tempor quam, id dictum eros. Nam augue sem, aliquam ac mauris in, pharetra convallis quam. Nulla faucibus mauris elit, vitae tristique nisi sollicitudin ut. Vivamus pretium nisi semper sapien eleifend.</p>
-                                    <p class="client mb-5">Homeros Yehudi / QA Engineer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
     <section id="about" class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">About Us.</h2>
+                    <h2 class="mt-0 mb-4">Un paradis pour les animaux âgés.</h2>
                     <div class="border"></div>
-                    <p class="mt-4 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
+                    <p class="mt-4 mb-0">Souvent âgés et difficilement adoptables, ces animaux peuvent désormais vivre une retraite méritée dans la plus complète liberté, en retrouvant un cadre familial qu’anime une « marraine d’adoption ».</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/1.jpg" alt="">
-                        </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1">John Doe</h5>
-                            <p>Web Developer</p>
-                            <div class="border mt-4 mb-4"></div>
-                            <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="http://www.facebook.com" title="Facebook">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.twitter.com" title="Twitter">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.linkedin.com" title="LinkedIn">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.github.com" title="GitHub">
-                                        <i class="fa fa-github"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/2.jpg" alt="">
-                        </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1">Clarinda Gratia</h5>
-                            <p>Designer</p>
-                            <div class="border mt-4 mb-4"></div>
-                            <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="http://www.dribbble.com" title="Dribbble">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.pinterest.com" title="Pinterest">
-                                        <i class="fa fa-pinterest"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.instagram.com" title="Instagram">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/3.jpg" alt="">
-                        </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1">Mandeep Eimear</h5>
-                            <p>Mobile Developer</p>
-                            <div class="border mt-4 mb-4"></div>
-                            <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="http://www.twitter.com" title="Twitter">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://developer.android.com/index.html" title="Android Developers">
-                                        <i class="fa fa-android"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.stackoverflow.com" title="Stack Overflow">
-                                        <i class="fa fa-stack-overflow"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInRight" data-delay="600">
-                        <div class="profile-photo">
-                            <img class="img-fluid" src="img/team/4.jpg" alt="">
-                        </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1">Wigstan Fergus</h5>
-                            <p>QA Engineer</p>
-                            <div class="border mt-4 mb-4"></div>
-                            <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="http://www.plus.google.com" title="Google+">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="http://www.trello.com" title="Trello">
-                                        <i class="fa fa-trello"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="mailto:john.doe@mail.com" title="Email">
-                                        <i class="fa fa-envelope"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+               
+</br></br></br>
                 </div>
             </div>
         </div>
@@ -366,9 +174,8 @@
         <div class="container">
             <div class="content cover text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">Getting in touch.</h2>
+                    <h2 class="mt-0 mb-4">Contacts.</h2>
                     <div class="border"></div>
-                    <p class="mt-4 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 animated hiding" data-animation="fadeInRight" data-delay="600">
