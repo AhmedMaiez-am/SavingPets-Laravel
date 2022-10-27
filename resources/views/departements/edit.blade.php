@@ -94,16 +94,18 @@ div {
 
 
 <div class="container">
-    <form action="{{ url('candidatures/' .$candidatures->id) }}" method="post">
+    <form action="{{ url('departements/' .$departements->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$candidatures->id}}" id="id" />
-        <label>Téléphone</label></br>
-        <input type="text" name="phone" id="phone" value="{{$candidatures->phone}}" class="form-control"></br>
-        <label>Email</label></br>
-        <input type="text" name="email" id="email" value="{{$candidatures->email}}" class="form-control"></br>
+        <input type="hidden" name="id" id="id" value="{{$departements->id}}" id="id" />
         <label>Nom</label></br>
-        <input type="text" name="nom" id="nom" value="{{$candidatures->nom}}" class="form-control"></br>
+        <input type="text" name="Nom" id="Nom" value="{{$departements->Nom}}" class="form-control"></br>
+        <label>Description</label></br>
+        <input type="text" name="Desc" id="Desc" value="{{$departements->Desc}}" class="form-control"></br>
+
+       
+ <label>Capacité</label></br>
+        <input type="text" name="Capacite" id="Capacite" value="{{$departements->Capacite}}" class="form-control"></br>
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
 </div>

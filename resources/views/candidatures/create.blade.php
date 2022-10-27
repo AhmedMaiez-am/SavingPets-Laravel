@@ -55,7 +55,7 @@ div {
 
 .container {
     width: 50%;
-    height: 70%;
+    height: 82%;
     margin: 10% auto;
 
 }
@@ -82,6 +82,14 @@ div {
                 <option value="Vétérinaire">Vétérinaire</option>
 
             </select>
+            <label>Département</label>
+            <select id="depart" name="depart" class="form-control" required>
+                <option value="" default>Choisir un département</option>
+                <option value="RH">RH</option>
+                <option value="Finance">Finance</option>
+                <option value="Communication">Communication</option>
+
+            </select>
             <label>Pourquoi voulez-vous postuler pour ce poste?</label>
             <input type="text" id="description" name="description" placeholder="description" class="form-control"
                 required>
@@ -92,5 +100,11 @@ div {
     </div>
 
 </body>
+
+
+
+
+
+
 
 </html>

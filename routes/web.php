@@ -6,6 +6,7 @@ use App\Http\Controllers\LocauxController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CandidaturesController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DepartementsController;
 use App\Models\Candidatures;
 
 /*
@@ -30,6 +31,7 @@ Route::get('/', function () {
 Route::resource('/animaux', AnimauxController::class);
 Route::resource('/candidatures', CandidaturesController::class);
 Route::resource('/locaux', LocauxController::class);
+Route::resource('/departements', DepartementsController::class);
 
 
 Auth::routes();

@@ -104,8 +104,8 @@ body {
             <div class="card">
 
                 <div class="card-body">
-                    <a href="{{ url('/candidatures/create') }}" class="btn btn-success btn-sm"
-                        title="Add New candidatures">
+                    <a href="{{ url('/departements/create') }}" class="btn btn-success btn-sm"
+                        title="Add New Departement">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add New
                     </a>
                     <br />
@@ -115,35 +115,32 @@ body {
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th> Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Desired Post</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Département</th>
-                                    <th>Actions</th>
+                                    <th>Nom</th>
+                                    <th>Description</th>
+                                    <th>Capacite </th>
+                                    <th>Number of applicants </th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($candidatures as $item)
+                                @foreach($departements as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->nom }}</td>
-                                    <td>{{ $item->prenom }}</td>
-                                    <td>{{ $item->position }}</td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>{{ $item->depart }}</td>
+                                    <td>{{ $item->Nom }}</td>
+                                    <td>{{ $item->Desc }}</td>
+                                    <td>{{ $item->Capacite }}</td>
+                                    <td>{{ $item->Nb_App }}</td>
+
                                     <td>
                                         <a href="" title="View departements" data-toggle="modal"
                                             data-target="#myModal"><button class="btn btn-info btn-sm"><i
                                                     class=" fa fa-eye" aria-hidden="true"></i>
                                                 View</button></a>
-                                        <a href="{{ url('/candidatures/' . $item->id . '/edit') }}"
+                                        <a href="{{ url('/departements/' . $item->id . '/edit') }}"
                                             title="Edit candidatures"><button class="btn btn-primary btn-sm"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                 Edit</button></a>
-                                        <form method="POST" action="{{ url('/candidatures' . '/' . $item->id) }}"
+                                        <form method="POST" action="{{ url('/departements' . '/' . $item->id) }}"
                                             accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
                                             {{ csrf_field() }}
@@ -170,6 +167,15 @@ body {
                                                             data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
+
+
+
+
+
+
+
+
+
 
 
 

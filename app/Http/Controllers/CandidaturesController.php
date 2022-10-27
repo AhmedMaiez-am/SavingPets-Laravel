@@ -36,7 +36,7 @@ class CandidaturesController extends Controller
     public function show($id)
     {
         $student = Candidatures::find($id);
-        return view('candidatures.show')->with('candidatures', $student);
+        return view('candidatures.index')->with('candidatures', $student);
     }
 
     public function edit($id)
