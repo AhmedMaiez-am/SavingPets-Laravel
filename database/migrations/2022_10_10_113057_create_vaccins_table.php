@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('locaux', function (Blueprint $table) {
+        Schema::create('vaccins', function (Blueprint $table) {
             $table->id();
-            $table->string('telephone_local');
-            $table->string('adresse_local');
-            $table->string('fax_local');
-            $table->timestamps();
-            
+            $table->string('titre');
+            $table->string('type');
+            $table->date('date_création');
+            $table->date('date_expiration');
         });
-
-
     }
 
     /**
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locaux');
+        Schema::dropIfExists('vaccins');
     }
 };

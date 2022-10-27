@@ -19,70 +19,129 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+</style>
 </head>
 
+	
 <body>
-
-
-
-<section id="about" class="page">
-        <div class="container">
-
-        
-
-
-            <div class="content text-center">
-                <div class="heading">
-                    <h2 class="mt-0 mb-4">Animaux</h2>
-                    <div class="border"></div>   
-                    <p class="mt-4 mb-0">notre responsabilité de respecter et de protéger l’animal. Au-delà de ce devoir, nous sommes convaincus que la relation que nous pouvons avoir avec un animal apporte à chacun bonheur, partage et complicité. Lutter contre la maltraitance et les trafics d’animaux, contre les abandons, sensibiliser le public et faire évoluer les mentalités, recueillir les animaux abandonnés et leur trouver une famille responsable, soutenir les petites associations, éduquer les jeunes… nous nous mobilisons jour après jour pour permettre à chaque animal d’avoir une vie meilleure et préserver l’avenir du monde vivant.</p>
-                
-                     </br>
+<div id="navbar-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
+            <div class="container">
+                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/vaccins">Vaccins</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/sterilisations">Sterilisations</a>
+                        </li>
+                    </ul>
                 </div>
-                <a href="{{ url('/animaux/create') }}" class="btn btn-primary btn-sm" title="Add New animaux">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter Animal
-                </a>
-                <a href="{{ url('/generate-pdf') }}" class="btn btn-primary btn-sm" title="Imprimer">
-                            <i  aria-hidden="true"></i> Imprimer
-                </a>
-
-            <div class="row">  
-            @foreach($animaux as $item)
-
-                <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
-                    <div>{{ $loop->iteration }}</div>   
-                    <div class="profile-photo"><img class="img-fluid" src="img/team/6.jpg" alt="">
-                    </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1"></h5>
-                            <p>{{ $item->ref }}</p>
-                            <div class="border mt-4 mb-4"></div> 
-                            <a href="{{ url('/animaux/' . $item->id) }}" title="Animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> </button></a>
-                           
-                            <a href="{{ url('/animaux/' . $item->id . '/edit') }}" title="Edit animaux"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                            <form method="POST" action="{{ url('/animaux' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </form>
-                        </div>
-                </div>                  
-                @endforeach
             </div>
-            </div>
-        </div>
+        </nav>
+    </div>
+	<br/><br/><br/><br/>
+
+	<div style="width:800px; margin:0 auto;" class="card">
+  <div class="card-body">
+	<!-- Si nous avons un vaccin $vaccin -->
+	@if (isset($sterilisation))
+
+	<form method="POST" action="{{ route('sterilisations.update', $sterilisation) }}" enctype="multipart/form-data" >
+	<h1>Editer une sterilisation</h1>
+		@method('PUT')
+
+	@else
 
 
-        
+	<form method="POST" action="{{ route('sterilisations.store') }}" enctype="multipart/form-data" >
+	<h1>Ajouter une nouvelle sterilisation</h1>
+	@endif
 
+		<!-- Le token CSRF -->
+		@csrf
+		
+		<p>
+			<label for="libelle" >Libelle</label><br/>
 
+			<input class="form-control" type="text" name="libelle" value="{{ isset($sterilisation->libelle) ? $sterilisation->libelle : old('libelle') }}"  id="libelle" placeholder="Le libelle du sterilisation" >
+            {{ isset($sterilisation->libelle) ? $sterilisation->libelle : old('libelle') }}</input>
+			@error("libelle")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
 
-    </section>
+		<p>
+			<label for="responsable" >Responsable</label><br/>
+			<input class="form-control" type="text" name="responsable" id="responsable" value="{{ isset($sterilisation->responsable) ? $sterilisation->responsable : old('responsable') }}" placeholder="Le responsable du sterilisation" >
+            {{ isset($sterilisation->responsable) ? $sterilisation->responsable : old('responsable') }}</input>
+			@error("responsable")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
 
+		<p>
+			<label for="description" >description</label><br/>
+			<input class="form-control" type="text-area" name="description" id="description" value="{{ isset($sterilisation->description) ? $sterilisation->description : old('description') }}" placeholder="La description du sterilisation" >
+            {{ isset($sterilisation->description) ? $sterilisation->description : old('description') }}</input>
+			@error("description")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
 
+        <p>
+			<label for="date" >Date du sterlisation</label><br/>
+			<input class="form-control" type="date" name="date" id="date" value="{{ isset($sterilisation->date) ? $sterilisation->date : old('date') }}" placeholder="La date du sterilisation" >
+            {{ isset($sterilisation->date) ? $sterilisation->date : old('date') }}</input>
+			@error("date")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
 
+		<label class="label">Vaccin</label><br/>
+							<select class="form-control" name="vaccin_id">
+                                @foreach($vaccins as $vaccin)
+                                    <option value="{{$vaccin->id}}">
+                                        {{ $vaccin->titre }}</option>
+                                @endforeach
+                            </select><br/><br/><br/>
+		<input type="submit" name="valider" value="Valider" class="btn btn-success">
 
-    <section id="services" class="page">
+	</form>
+	</div>
+</div>
+
+<section class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
@@ -161,7 +220,5 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-25089888-9');ga('send','pageview');
     </script>
-
-
-</body>
-    </html>
+	</body>
+</html>

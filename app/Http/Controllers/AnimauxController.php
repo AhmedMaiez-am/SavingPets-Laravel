@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Animaux;
+use App\Models\Locaux;
 
 class AnimauxController extends Controller
 {
@@ -14,10 +15,26 @@ class AnimauxController extends Controller
         return view('animaux.index')->with('animaux',$animaux);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details($idLoc)
+    {
+        $local=Locaux::find($idLoc);
+        return view('animaux.show')->with('local',$local);
+        
+    }
+
+
     
     public function create()
     {
-        return view('animaux.create');
+
+        $locaux = Locaux::all();
+        
+        return view('animaux.create', compact("locaux"));
     }
 
     
@@ -30,16 +47,20 @@ class AnimauxController extends Controller
             'race' => 'required',
             'type' => 'required',
         ]);
-        Animaux::create($input);
+        $Animaux=Animaux::create($input);
+        $Animaux->idLoc=$request->idLoc;
         return redirect('animaux')->with('flash_message', 'Animaux Addedd!');  
     }
 
    
     public function show($id)
     {
+      
         $animaux = Animaux::find($id);
         return view('animaux.show')->with('animaux',$animaux);
     }
+
+   
 
    
     public function edit($id)

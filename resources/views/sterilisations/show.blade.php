@@ -19,70 +19,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+</style>
 </head>
 
 <body>
-
-
-@extends('layouts.app')
-@section('content')
-
-<section id="services" class="page">
-        <div class="container">
-            <div class="content text-center">
-                <div class="heading">
-                    <h2 class="mt-0 mb-4">Animaux Détails</h2>
-                    <div class="border"></div>
-                    <p class="mt-4 mb-0">Nous aimons protéger, sauver, soigner et aider nos animaux</p>
+<div id="navbar-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
+            <div class="container">
+                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/vaccins">Vaccins</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/sterilisations">Sterilisations</a>
+                        </li>
+                    </ul>
                 </div>
-               
             </div>
-        </div>
-
-
-
-
-   
-
-
-<div class="card">
-
-                        
-  
+        </nav>
+    </div>
+	<br/><br/><br/><br/>
+	<div  style="width:800px; margin:0 auto;"  class="card">
+  <div class="card-header"><h1>Sterilisation numèro : {{ $sterilisation->id }}</h1></div>
   <div class="card-body">
-
-  <form method="POST" action="{{ url('/animaux' . '/' . $animaux->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
- <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>Supprimer</button>
- </form>
-
-                        
   
         <div class="card-body">
-        <h5 class="card-title">Ref : {{ $animaux->ref }}</h5>
-        <p class="card-text">Age : {{ $animaux->age }}</p>
-        <p class="card-text">Race : {{ $animaux->race }}</p>
-        <p class="card-text">Type : {{ $animaux->type }}</p>
-        <p class="card-text">Date de création : {{ $animaux->created_at }}</p>
-        <p class="card-text">Date de modification : {{ $animaux->updated_at }}</p>
-        <p class="card-text">ID Local : {{ $animaux->idLoc }}</p>
-        
-
+        <h5 class="card-title">Libelle : {{ $sterilisation->libelle }}</h5>
+        <p class="card-text">Responsable : {{ $sterilisation->responsable }}</p>
+        <p class="card-text">Description: {{ $sterilisation->description }}</p>
+		<p class="card-text">Date de sterilisation : {{ $sterilisation->date }}</p>
+        <p class="card-text">Code du vaccin associé : {{ $sterilisation->vaccin_id }}</p>
   </div>
-
   
+
       
-  
-  
+    </hr>
+	<p><a class="btn btn-primary" href="{{ route('sterilisations.index') }}" title="Retourner aux sterilisations" >Retourner aux sterilisations</a></p>
+  </div>
 </div>
-</div>
-
-</section>
-
-
-
-<section id="services" class="page">
+<section class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
@@ -90,11 +96,25 @@
                     <div class="border"></div>
                     <p class="mt-4 mb-0">Nous aimons protéger, sauver, soigner et aider nos animaux</p>
                 </div>
-              
+                <div class="row">
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="300">
+                        <i class="fa fa-globe fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">www.savingpets.com</a></h3>
+                       
+                    </div>
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="600">
+                        <i class="fa fa-cloud fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">www.facebook.com/savingpets</a></h3>
+                        
+                    </div>
+                    <div class="col-sm-4 service animated hiding" data-animation="fadeInUp" data-delay="900">
+                        <i class="fa fa-mobile fa-5x"></i>
+                        <h3 class="mt-5 mb-4"><a href="#">71.000.000</a></h3>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-
-       
     </section>
 
     <footer id="footer">
@@ -148,7 +168,6 @@
         ga('create','UA-25089888-9');ga('send','pageview');
     </script>
 
-@endsection
 
-</body>
+	</body>
 </html>

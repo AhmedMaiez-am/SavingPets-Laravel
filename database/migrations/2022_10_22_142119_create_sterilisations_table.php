@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('animaux', function (Blueprint $table) {
+        Schema::create('sterilisations', function (Blueprint $table) {
             $table->id();
-            $table->string("ref");
-            $table->string("age");
-            $table->string("race");
-            $table->string("type");
-            $table->timestamps();
-            $table->unsignedBigInteger('idLoc');
-            $table->foreign('idLoc')
+            $table->string('libelle');
+            $table->string('responsable');
+            $table->string('description');
+            $table->date('date');           
+            $table->unsignedBigInteger('vaccin_id');
+            $table->foreign('vaccin_id')
                 -> references('id')
-                -> on('locaux')
+                -> on('vaccins')
                 -> onDelete('restrict')
                 -> onUpdate('restrict');
         });
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('animaux');
+        Schema::dropIfExists('sterilisations');
     }
 };
