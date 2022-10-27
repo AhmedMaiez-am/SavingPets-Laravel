@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\VaccinController;
+use App\Http\Controllers\SterilisationController;
+use App\Http\Controllers\SimpleQRcodeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layout');
 });
+Route::get("simple-qrcode", "SimpleQRcodeController@generate")->name('simple-qrcode.generate');
+Route::get('details/{vaccin_id}', 'App\Http\Controllers\SterilisationController@details')->name('sterilisations.details');
+Route::resource("sterilisations",SterilisationController::class);
+Route::resource("vaccins", VaccinController::class);
+Route::resource("simple-qrcode", SimpleQRcodeController::class);
