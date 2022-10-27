@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Candidatures;
+use App\Models\Departements;
+
 
 class CandidaturesController extends Controller
 {
@@ -15,7 +17,8 @@ class CandidaturesController extends Controller
 
     public function create()
     {
-        return view('candidatures.create');
+        $departements = Departements::all();
+        return view('candidatures.create', compact("departements"));
     }
 
     public function store(Request $request)
@@ -29,7 +32,8 @@ class CandidaturesController extends Controller
             'description' => 'required',
             'position' => 'required',
         ]);
-        Candidatures::create($input);
+        $candi = Candidatures::create($input);
+        $candi->id_dep = $request->id_dep;
         return redirect('candidatures')->with('flash_message', 'Candidature Addedd!');
     }
 

@@ -11,4 +11,8 @@ class Departements extends Model
     protected $table = 'departements';
     protected $primaryKey = 'id';
     protected $fillable = ['Desc', 'Nom', 'Capacite'];
+    public function Candidatures()
+    {
+        return $this->hasMany(Candidatures::class);
+    }
 }

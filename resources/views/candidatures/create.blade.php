@@ -83,12 +83,12 @@ div {
 
             </select>
             <label>Département</label>
-            <select id="depart" name="depart" class="form-control" required>
-                <option value="" default>Choisir un département</option>
-                <option value="RH">RH</option>
-                <option value="Finance">Finance</option>
-                <option value="Communication">Communication</option>
-
+            <select name="id_dep" class="form-control" required>
+                @foreach($departements as $dep)
+                <option value="{{$dep->id}}">
+                    {{ $dep->Nom }}
+                </option>
+                @endforeach
             </select>
             <label>Pourquoi voulez-vous postuler pour ce poste?</label>
             <input type="text" id="description" name="description" placeholder="description" class="form-control"
@@ -100,6 +100,11 @@ div {
     </div>
 
 </body>
+
+
+
+
+
 
 
 

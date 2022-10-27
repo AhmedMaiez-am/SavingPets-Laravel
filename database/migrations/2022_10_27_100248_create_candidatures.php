@@ -25,6 +25,12 @@ return new class extends Migration
             $table->string('phone');
             $table->string('status');
             $table->string('depart');
+            $table->unsignedBigInteger('id_dep');
+            $table->foreign('id_dep')
+                ->references('id')
+                ->on('departements')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
         });
     }
 

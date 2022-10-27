@@ -10,5 +10,9 @@ class Candidatures extends Model
     //use HasFactory;
     protected $table = 'candidatures';
     protected $primaryKey = 'id';
-    protected $fillable = ['position', 'nom', 'prenom', 'description', 'email', 'phone', 'depart'];
+    protected $fillable = ['position', 'nom', 'prenom', 'description', 'email', 'phone', 'depart', 'id_dep'];
+    public function Departements()
+    {
+        return $this->belongsTo(Departements::class);
+    }
 }

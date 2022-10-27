@@ -26,7 +26,6 @@ body {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
-
     margin: 15% 15% auto;
 }
 </style>
@@ -133,7 +132,7 @@ body {
                                     <td>{{ $item->position }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->status }}</td>
-                                    <td>{{ $item->depart }}</td>
+                                    <td>{{ $item->id_dep }}</td>
                                     <td>
                                         <a href="" title="View departements" data-toggle="modal"
                                             data-target="#myModal"><button class="btn btn-info btn-sm"><i
@@ -170,6 +169,8 @@ body {
                                                             data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
+
+
 
 
 
