@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\VaccinController;
+use App\Http\Controllers\SterilisationController;
+use App\Http\Controllers\SimpleQRcodeController;
 use App\Http\Controllers\AnimauxController;
 use App\Http\Controllers\LocauxController;
 use App\Http\Controllers\RoleController;
@@ -23,10 +27,12 @@ use App\Models\Candidatures;
 Route::get('/', function () {
     return view('layout');
 });
+Route::get("simple-qrcode", "SimpleQRcodeController@generate")->name('simple-qrcode.generate');
+Route::get('details/{vaccin_id}', 'App\Http\Controllers\SterilisationController@details')->name('sterilisations.details');
+Route::resource("sterilisations",SterilisationController::class);
+Route::resource("vaccins", VaccinController::class);
+Route::resource("simple-qrcode", SimpleQRcodeController::class);
 
-Route::get('/', function () {
-    return view('layout');
-});
 
 Route::resource('/animaux', AnimauxController::class);
 Route::resource('/candidatures', CandidaturesController::class);
@@ -42,6 +48,3 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
