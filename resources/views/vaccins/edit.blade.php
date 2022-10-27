@@ -1,9 +1,5 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en-us">
-
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -22,57 +18,133 @@
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    
     <![endif]-->
+	<style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+</style>
 </head>
 
+	
 <body>
-
-
-
-
-<section id="about" class="page">
-        <div class="container">
-            <div class="content text-center">
-                <div class="heading">
-                    <h2 class="mt-0 mb-4">Locaux</h2>
-                    <div class="border"></div>   
-                    <p class="mt-4 mb-0">Plus c'est local plus c'est universel.</p>
-                
-                     </br>
+<div id="navbar-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
+            <div class="container">
+                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/vaccins">Vaccins</a>
+                        </li>
+						<li class="nav-item">
+						<a class="nav-link" href="/sterilisations">Sterilisations</a>
+                        </li>
+                    </ul>
                 </div>
-                <a href="{{ url('/locaux/create') }}" class="btn btn-primary btn-sm" title="ajouter local">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter local
-                        </a>
-            <div class="row">  
-            @foreach($locaux as $item)
-
-                <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
-                    <div>{{ $loop->iteration }}</div>   
-                    <div class="profile-photo"><img class="img-fluid" src="img/team/7.jpg" alt="">
-                    </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1"></h5>
-                            <p>{{ $item->adresse_local }}</p>
-                            <div class="border mt-4 mb-4"></div> 
-                            <a href="{{ url('/locaux/' . $item->id) }}" title="View locaux"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                                            <a href="{{ url('/locaux/' . $item->id . '/edit') }}" title="Edit locaux"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                          
-                                            <form method="POST" action="{{ url('/locaux' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </form>
-                        </div>
-                </div>                  
-                @endforeach
             </div>
-            </div>
-        </div>
-    </section>
+        </nav>
+    </div>
+	<br/><br/><br/><br/>
 
+	<div style="width:800px; margin:0 auto;" class="card">
+  <div class="card-body">
+	<!-- Si nous avons un vaccin $vaccin -->
+	@if (isset($vaccin))
 
-    <section id="services" class="page">
+	<!-- Le formulaire est géré par la route "vaccins.update" -->
+	<form method="POST" action="{{ route('vaccins.update', $vaccin) }}" enctype="multipart/form-data" >
+	<h1>Editer un vaccin</h1>
+		<!-- <input type="hidden" name="_method" value="PUT"> -->
+		@method('PUT')
+
+	@else
+
+	<!-- Le formulaire est géré par la route "vaccins.store" -->
+	<form method="POST" action="{{ route('vaccins.store') }}" enctype="multipart/form-data" >
+	<h1>Ajouter un nouveau vaccin</h1>
+	@endif
+
+		<!-- Le token CSRF -->
+		@csrf
+		
+		<p>
+			<label for="titre" >Titre</label><br/>
+
+			<!-- S'il y a un $vaccin->titre, on complète la valeur de l'input -->
+			<input class="form-control" type="text" name="titre" value="{{ isset($vaccin->titre) ? $vaccin->titre : old('titre') }}"  id="titre" placeholder="Le titre du vaccin" >
+            {{ isset($vaccin->titre) ? $vaccin->titre : old('titre') }}</input>
+			<!-- Le message d'erreur pour "titre" -->
+			@error("titre")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
+
+		<p>
+			<label for="type" >Type</label><br/>
+			<!-- S'il y a un $vaccin->type, on complète la valeur du textarea -->
+			<input class="form-control" type="text" name="type" id="type" value="{{ isset($vaccin->type) ? $vaccin->type : old('type') }}" placeholder="Le type du vaccin" >
+            {{ isset($vaccin->type) ? $vaccin->type : old('type') }}</input>
+			<!-- Le message d'erreur pour "type" -->
+			@error("type")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
+
+		<p>
+			<label for="date_création" >Date de création</label><br/>
+			<!-- S'il y a un $vaccin->date_création, on complète la valeur du textarea -->
+			<input class="form-control" type="date" name="date_création" id="date_création" value="{{ isset($vaccin->date_création) ? $vaccin->date_création : old('date_création') }}" placeholder="La date de création du vaccin" >
+            {{ isset($vaccin->date_création) ? $vaccin->date_création : old('date_création') }}</input>
+			<!-- Le message d'erreur pour "date_création" -->
+			@error("date_création")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
+
+        <p>
+			<label for="date_expiration" >Date d'expiration'</label><br/>
+			<!-- S'il y a un $vaccin->date_expiration, on complète la valeur du textarea -->
+			<input class="form-control" type="date" name="date_expiration" id="date_expiration" value="{{ isset($vaccin->date_expiration) ? $vaccin->date_expiration : old('date_expiration') }}" placeholder="La date d'expiration' du vaccin" >
+            {{ isset($vaccin->date_expiration) ? $vaccin->date_expiration : old('date_expiration') }}</input>
+			<!-- Le message d'erreur pour "date_création" -->
+			@error("date_expiration")
+			<div>{{ $message }}</div>
+			@enderror
+		</p>
+		
+		<input type="submit" name="valider" value="Valider" class="btn btn-success">
+
+	</form>
+	</div>
+</div>
+
+<section class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
@@ -100,7 +172,6 @@
             </div>
         </div>
     </section>
-
 
     <footer id="footer">
         <div class="container">
@@ -152,12 +223,5 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-25089888-9');ga('send','pageview');
     </script>
-   
-
-  
-    </body>
-    </html>
-
-
-
-    
+	</body>
+</html>

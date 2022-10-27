@@ -1,9 +1,5 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en-us">
-
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -22,57 +18,134 @@
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    
     <![endif]-->
+    <style>
+body {
+    background: linear-gradient(-45deg, #ee7752, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+</style>
 </head>
 
-<body>
-
-
-
-
-<section id="about" class="page">
-        <div class="container">
-            <div class="content text-center">
-                <div class="heading">
-                    <h2 class="mt-0 mb-4">Locaux</h2>
-                    <div class="border"></div>   
-                    <p class="mt-4 mb-0">Plus c'est local plus c'est universel.</p>
-                
-                     </br>
+<Body>
+<div id="navbar-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed">
+            <div class="container">
+                <a class="navbar-brand nav-external" href="#home">Saving Pets</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/vaccins">Vaccins</a>
+                        </li>
+                        <li class="nav-item">
+						<a class="nav-link" href="/sterilisations">Sterilisations</a>
+                        </li>
+                    </ul>
                 </div>
-                <a href="{{ url('/locaux/create') }}" class="btn btn-primary btn-sm" title="ajouter local">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Ajouter local
-                        </a>
-            <div class="row">  
-            @foreach($locaux as $item)
-
-                <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
-                    <div>{{ $loop->iteration }}</div>   
-                    <div class="profile-photo"><img class="img-fluid" src="img/team/7.jpg" alt="">
-                    </div>
-                        <div class="bio mt-4">
-                            <h5 class="mb-1"></h5>
-                            <p>{{ $item->adresse_local }}</p>
-                            <div class="border mt-4 mb-4"></div> 
-                            <a href="{{ url('/locaux/' . $item->id) }}" title="View locaux"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-                                            <a href="{{ url('/locaux/' . $item->id . '/edit') }}" title="Edit locaux"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                                          
-                                            <form method="POST" action="{{ url('/locaux' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-primary btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </form>
-                        </div>
-                </div>                  
-                @endforeach
             </div>
+        </nav>
+    </div>
+
+
+	<br/><br/>
+ <section id="about" class="page">
+        <div  class="container">
+            <div  class="content text-center">
+                <div class="heading">
+                    <h2 class="mt-0 mb-4">Sterilisations</h2>
+                    <div class="border"></div>
+                </div>
+                </div>
             </div>
         </div>
     </section>
 
+	<br/>
+	<div class="container">
+        <div class="content text-center">
+            <div class="col-md-19">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Gestion des sterilisations</h2>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ route('sterilisations.create') }}" class="btn btn-success btn-sm" title="Add New sterilisation">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Enregistrer une nouvelle sterilisation
+                        </a>
+                        <br/>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Libelle</th>
+                                        <th>Responsable</th>
+                                        <th>Description</th>
+                                        <th>Date de sterilisation</th>
+                                        <th>Code du vaccin associé</th>
+                                        <th>Details</th>
+                                        <th>QR Code</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($sterilisations as $sterilisation)
+                                    <tr>
+                                        <td>{{ $sterilisation->libelle }}</td>
+                                        <td>{{ $sterilisation->responsable }}</td>
+                                        <td>{{ $sterilisation->description }}</td>
+                                        <td>{{ $sterilisation->date }}</td>
+                                        <td style="text-align: center; vertical-align: middle;">{{ $sterilisation->vaccin_id }}
+                                        </td>
+                                        <td> <a href="{{ url('/details/'.$sterilisation->vaccin_id) }}" title="Details vaccin"><button class="btn btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i> Details Vaccin</button></a></td>
+                                        <td> <a href="{{ url('/simple-qrcode/'.$sterilisation->vaccin_id) }}" title="simple-qrcode"><button class="btn btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i> QR Code</button></a></td>
 
-    <section id="services" class="page">
+                                        <td>
+                                            <a href="{{ url('/sterilisations/' . $sterilisation->id . '/edit') }}" title="Edit Sterilisation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</button></a>
+                                            <form method="POST" action="{{ url('/sterilisations' . '/' . $sterilisation->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete animaux" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <section class="page">
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
@@ -100,7 +173,6 @@
             </div>
         </div>
     </section>
-
 
     <footer id="footer">
         <div class="container">
@@ -152,12 +224,8 @@
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
         ga('create','UA-25089888-9');ga('send','pageview');
     </script>
-   
 
-  
-    </body>
-    </html>
-
-
-
-    
+	
+	</Body>
+	
+	</html>
