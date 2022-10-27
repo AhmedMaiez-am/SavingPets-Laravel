@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AssociationController;
+use App\Http\Controllers\ActionController;
+
 
 use App\Http\Controllers\AnimauxController;
 use App\Http\Controllers\LocauxController;
@@ -17,7 +19,9 @@ use App\Http\Controllers\LocauxController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource("/associations", AssociationController::class);
+Route::resource('/associations', AssociationController::class);
+Route::resource('/actions', ActionController::class);
+
 
 Route::get('/', function () {
     return view('layout');

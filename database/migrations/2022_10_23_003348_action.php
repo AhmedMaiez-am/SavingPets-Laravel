@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('actions', function (Blueprint $table)
+        {
+            
+
+        $table->id();
+        $table->string('description');
+        $table->timestamp('date');
+        $table->unsignedBigInteger('association_id');
+            $table->foreign('association_id')
+                ->references('association_id')
+                ->on('associations')
+                ->onDelete('restrict')
+                ->onUpdate('restrict');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('actions');
+
+    }
+};

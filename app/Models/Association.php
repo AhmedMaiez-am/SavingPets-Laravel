@@ -9,6 +9,12 @@ class Association extends Model
 {
     use HasFactory;
     protected $table='associations';
-    protected $primaryKey='id';
     protected $fillable=['titre','adresse','email','telephone'];
+    public $timestamps = false;
+
+    public function actions()
+
+{
+return $this->hasMany(Action::class,'association_id','id');
+}
 }

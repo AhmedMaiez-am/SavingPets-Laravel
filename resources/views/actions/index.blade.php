@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -63,13 +64,13 @@
         <div class="container">
             <div class="content text-center">
                 <div class="heading">
-                    <h2 class="mt-0 mb-4">Nos associations</h2>
+                    <h2 class="mt-0 mb-4">Nos actions</h2>
                     <div class="border"></div>
                     <p class="mt-4 mb-0">notre responsabilité de respecter et de protéger l’animal. Au-delà de ce devoir, nous sommes convaincus que la relation que nous pouvons avoir avec un animal apporte à chacun bonheur, partage et complicité. Lutter contre la maltraitance et les trafics d’animaux, contre les abandons, sensibiliser le public et faire évoluer les mentalités, recueillir les animaux abandonnés et leur trouver une famille responsable, soutenir les petites associations, éduquer les jeunes… nous nous mobilisons jour après jour pour permettre à chaque animal d’avoir une vie meilleure et préserver l’avenir du monde vivant.</p>
                 </div>
 
             <div class="row">
-            @foreach($associations as $item)
+            @foreach($actions as $item)
 
                 <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
                     <div>{{ $loop->iteration }}</div>   
@@ -80,10 +81,10 @@
                         
                         <div class="bio mt-4">
                             <h5 class="mb-1"></h5>
-                            <p>{{ $item->titre }}</p>
+                            <p>{{ $item->description }}</p>
                             <div class="border mt-4 mb-4"></div>
                             
-                            <a href="{{ url('/associations/' . $item->id) }}" title="View association"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                            <a href="{{ url('/actions/' . $item->id) }}" title="View association"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
 
 
 
@@ -94,7 +95,7 @@
                    
                 @endforeach
 
- 
+  
             </div>
 
 
@@ -112,7 +113,7 @@
                         <h2>Animaux</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ url('/associations/create') }}" class="btn btn-primary btn-sm" title="Add New association">
+                        <a href="{{ url('/actions/create') }}" class="btn btn-primary btn-sm" title="Add New association">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
@@ -122,24 +123,27 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>titre</th>
-                                        <th>adresse</th>
-                                        <th>telephone</th>
-                                        <th>email</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Association</th>
+
+                                
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($associations as $item)
+                                @foreach($actions as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->titre }}</td>
-                                        <td>{{ $item->adresse }}</td>
-                                        <td>{{ $item->telephone }}</td>
-                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->description }}</td>
+                                        <td>{{ $item->date }}</td>
+                                        <td>{{ $item->association_id }}</td>
+
+
+                                  
                                         <td>
-                                            <a href="{{ url('/associations/' . $item->id) }}" title="View associations"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/associations/' . $item->id . '/edit') }}" title="Edit associations"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            <form method="POST" action="{{ url('/associations' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <a href="{{ url('/actions/' . $item->id) }}" title="View associations"><button class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/actions/' . $item->id . '/edit') }}" title="Edit associations"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <form method="POST" action="{{ url('/actions' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-primary btn-sm" title="Delete associations" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>

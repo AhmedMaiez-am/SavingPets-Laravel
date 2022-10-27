@@ -27,18 +27,14 @@ class AssociationController extends Controller
      */
     public function create()
     {
-        //
+        return view('associations.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Association::create($input);
+        return redirect('associations')->with('flash_message', 'Association Addedd!');  
     }
 
     /**
@@ -47,9 +43,10 @@ class AssociationController extends Controller
      * @param  \App\Models\Association  $association
      * @return \Illuminate\Http\Response
      */
-    public function show(Association $association)
+    public function show( $id)
     {
-        //
+        $association = Association::find($id);
+        return view('associations.show')->with('associations', $association);
     }
 
     /**
@@ -58,31 +55,23 @@ class AssociationController extends Controller
      * @param  \App\Models\Association  $association
      * @return \Illuminate\Http\Response
      */
-    public function edit(Association $association)
+    public function edit($id)
     {
-        //
+        $association = Association::find($id);
+        return view('associations.edit')->with('associations', $association);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Association  $association
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Association $association)
+  
+    public function update(Request $request, $id)
     {
-        //
+        $association = Association::find($id);
+        $input = $request->all();
+        $association->update($input);
+        return redirect('associations')->with('flash_message', 'association Updated!');  
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Association  $association
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Association $association)
+  
+    public function destroy($id)
     {
-        //
+        Association::destroy($id);
+        return redirect('associations')->with('flash_message', 'association deleted!');  
     }
 }
