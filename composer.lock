@@ -3183,8 +3183,6 @@
             "time": "2022-09-16T03:22:46+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "sabberworm/php-css-parser",
             "version": "8.4.0",
             "source": {
@@ -3320,7 +3318,6 @@
             "time": "2022-10-23T02:49:28+00:00"
         },
         {
->>>>>>> abde53fa1913b39c5f5a2d84310ae71e725c180d
             "name": "symfony/console",
             "version": "v6.1.5",
             "source": {
