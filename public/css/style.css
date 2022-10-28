@@ -7,7 +7,6 @@ License: Apache License v2.0
 
 body {
     font-family: "Source Sans Pro", sans-serif;
-    
 }
 
 h1,
@@ -206,7 +205,6 @@ a:focus {
 .page .content.cover {
     margin-top: 8rem;
     margin-bottom: 8rem;
-
 }
 
 .page .border {
@@ -241,26 +239,6 @@ a:focus {
     background-size: cover;
 }
 
-#showA {
-    padding: 0;
-    color: rgb(255, 255, 255);
-    background-image: url(../img/team/assoc.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    
-}
-
-.card{
-    background: transparent;
-    border: 2px solid #c6c0c0;
-
-
-}
-
-.card h5 {
-
-}
 #home h1 {
     font-size: 4rem;
     line-height: 1;
